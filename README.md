@@ -16,7 +16,7 @@ This Video Player App built with HTML, CSS, JavaScript.
 
 Users should be able to:
 
-- Users can play the video and adjust the speed, volume, progress and fullscreen in the control panel.
+- Users can play the video and adjust the control panel's speed, volume, progress and fullscreen.
 
 ### Screenshot
 
