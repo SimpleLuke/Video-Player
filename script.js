@@ -105,6 +105,42 @@ const changeSpeed = () => {
 };
 
 // Fullscreen ------------------------------- //
+const openFullscreen = () => {
+  if (video.requestFullscreen) {
+    video.requestFullscreen();
+  } else if (video.webkitRequestFullscreen) {
+    /* Safari */
+    video.webkitRequestFullscreen();
+  } else if (video.msRequestFullscreen) {
+    /* IE11 */
+    video.msRequestFullscreen();
+  }
+  //   video.classList.add("video-fullscreen");
+};
+
+const closeFullscreen = () => {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) {
+    /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) {
+    /* IE11 */
+    document.msExitFullscreen();
+  }
+  //   video.classList.remove("video-fullscreen");
+};
+
+let fullscreen = false;
+
+const toggleFullscreen = () => {
+  if (!fullscreen) {
+    openFullscreen();
+  } else {
+    closeFullscreen();
+  }
+  fullscreen = !fullscreen;
+};
 
 // Event Listeners
 playBtn.addEventListener("click", togglePlay);
@@ -116,3 +152,4 @@ progressRange.addEventListener("click", setProgress);
 volumeRange.addEventListener("click", changeVolume);
 volumeIcon.addEventListener("click", toggleMute);
 speed.addEventListener("change", changeSpeed);
+fullscreenBtn.addEventListener("click", toggleFullscreen);
