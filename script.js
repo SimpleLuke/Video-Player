@@ -38,10 +38,22 @@ const displayTime = (time) => {
 
 // Update progress bar as video plays
 const updateProgress = () => {
-  console.log(video.currentTime, currentTime);
   progressBar.style.width = `${(video.currentTime / video.duration) * 100}%`;
   currentTime.textContent = `${displayTime(video.currentTime)}/`;
   duration.textContent = `${displayTime(video.duration)}`;
+};
+
+// Click to seek within the video
+const setProgress = (e) => {
+  console.log(video.currentTime);
+  const newTime = e.offsetX / progressRange.offsetWidth;
+  progressBar.style.width = `${newTime * 100}%`;
+  video.currentTime = newTime * video.duration;
+  console.log(
+    progressBar.style.width,
+    newTime * video.duration,
+    video.currentTime
+  );
 };
 
 // Volume Controls --------------------------- //
@@ -56,3 +68,4 @@ video.addEventListener("click", togglePlay);
 video.addEventListener("ended", showPlayIcon);
 video.addEventListener("timeupdate", updateProgress);
 video.addEventListener("canplay", updateProgress);
+progressRange.addEventListener("click", setProgress);
